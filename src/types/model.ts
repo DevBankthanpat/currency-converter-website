@@ -2,7 +2,6 @@ export type CurrencyCode = string;
 export type CurrencyName = string;
 
 export type CurrenciesMap = Record<CurrencyCode, CurrencyName>;
-
 export type RatesMap = Record<CurrencyCode, number>;
 
 export interface RateTable {
