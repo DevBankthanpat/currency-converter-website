@@ -1,36 +1,117 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Currency Converter Website
 
-## Getting Started
+A simple web-based **currency converter** built with **Next.js 14, TypeScript, TailwindCSS**.  
+This project is part of the **Web Frontend Developer Screening Test**.
 
-First, run the development server:
+---
 
+## 🌐 Live Demo
+[👉 View on GitHub Pages](https://devbankthanpat.github.io/currency-converter-website/)
+
+---
+
+## 📦 Tech Stack
+- [Next.js 14](https://nextjs.org/) (Static Export mode)
+- [TypeScript](https://www.typescriptlang.org/)
+- [TailwindCSS](https://tailwindcss.com/)
+- [Lucide-react](https://lucide.dev/) (icons)
+
+---
+
+## 📊 API Sources
+- **List of currencies**  
+  `https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies.json`
+
+- **Exchange rates by base currency**  
+  `https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/{base}.json`
+
+⚠️ Note: This free API updates daily (not real-time).
+
+---
+
+## ▶️ Getting Started (Local Development)
+
+### 1. Clone the repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/devbankthanpat/currency-converter-website.git
+cd currency-converter-website
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Install dependencies
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. Run the dev server
+```bash
+npm run dev
+```
+Open [http://localhost:3000](http://localhost:3000) to view in the browser.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🏗 Production Build & Preview
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run build
+npx serve out
+```
+This will generate a static export in the `out/` directory and serve it locally.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🚀 Deployment
+Deployment is handled automatically using **GitHub Actions**:
 
-## Deploy on Vercel
+- On every push to `main`, the project is built and exported to `out/`
+- `.nojekyll` is added to ensure `_next/` assets are served correctly
+- Artifact is deployed to GitHub Pages
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+You can view the workflow file in: `.github/workflows/deploy-pages.yml`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 📂 Project Structure
+
+```
+src/
+ ├─ app/                # Next.js App Router pages
+ ├─ components/         # Reusable UI components (ConverterPanel, RateCard, etc.)
+ ├─ services/           # API service layer (CurrencyService)
+ ├─ lib/                # Utility functions (http wrapper, error handling)
+ ├─ types/              # TypeScript types (models, interfaces)
+ └─ config/             # App constants (default currencies)
+```
+
+---
+
+## 📋 Technical Decisions
+- **Next.js + Static Export**: suitable for GitHub Pages hosting  
+- **TailwindCSS**: fast, utility-first styling with responsive design  
+- **Services Layer**: centralized API handling with error handling & timeout  
+- **TypeScript**: strict typing for reliability  
+- **Responsive Design**: tested on both desktop and mobile  
+- **Error/Loading States**: skeleton UI and retry option for better UX
+
+---
+
+## ⚠️ Limitations
+- API is **daily updated** (not real-time exchange rates)  
+- No persistent storage (history, favorites)  
+- No authentication
+
+---
+
+## 🔮 Future Improvements
+- Integrate real-time exchange rate API (e.g., ExchangeRate API, CurrencyAPI)  
+- Add charts for currency trends  
+- Allow saving frequently used conversions  
+- Add i18n (multi-language support)
+
+---
+
+## 👤 Author
+**Thanapat Munmanothum**  
+Frontend Developer Candidate
+
+---
