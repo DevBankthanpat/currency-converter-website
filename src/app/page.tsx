@@ -17,7 +17,7 @@ export default function Home() {
 
     const [from, setFrom] = useState('usd');
     const [to, setTo] = useState('thb');
-    const [amount, setAmount] = useState('1');
+    const [amount, setAmount] = useState('');
 
     const [table, setTable] = useState<RateTable | null>(null);
     const [ratesError, setRatesError] = useState<string | null>(null);
@@ -96,6 +96,7 @@ export default function Home() {
     };
 
     if (loadingCur && !currencies) return <Loading />;
+
     if (curError) return <ErrorMessage message={`โหลดรายการสกุลเงินไม่สำเร็จ: ${curError}`} onRetry={() => {
         setCurrencies(null);
         setLoadingCur(true);
@@ -109,7 +110,6 @@ export default function Home() {
         setRatesError(null);
         window.location.reload();
     }} />;
-
 
     return (
         <main className="mx-auto max-w-2xl p-4 space-y-6">

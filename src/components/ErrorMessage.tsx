@@ -6,8 +6,14 @@ interface ErrorMessageProps {
 export default function ErrorMessage({ message, onRetry }: ErrorMessageProps) {
     return (
         <main className="mx-auto max-w-2xl p-4 space-y-4">
+
+            {/* Title */}
             <h1 className="text-2xl font-semibold">Currency Converter</h1>
+
+            {/* Error message */}
             <p className="text-red-600">{message}</p>
+
+            {/* Retry Button */}
             {onRetry && (
                 <button
                     onClick={onRetry}

@@ -1,4 +1,5 @@
 import CurrencyDropdown from "@/components/CurrencyDropdown";
+import { Pencil } from "lucide-react";
 
 type Option = { code: string; name?: string };
 
@@ -29,16 +30,22 @@ export default function ConverterPanel({
 }: Props) {
     return (
         <div className="rounded-3xl bg-white/5 backdrop-blur border border-white/10 p-5 md:p-6 shadow-xl">
-
+            {/* From Currency */}
             <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-300">Amount</span>
+                <div className="flex items-center gap-1 text-sm text-gray-300">
+                    <span>From</span>
+                    <Pencil size={14} className="text-gray-400" />
+                </div>
+                <div className="w-1/2 min-w-0 md:w-auto md:min-w-[260px]">
                 <CurrencyDropdown
                     value={from}
                     options={currencyOptions}
                     onChange={onFromChange}
                 />
+                </div>
             </div>
 
+            {/* Amount */}
             <div className="mt-2 text-6xl md:text-7xl font-semibold tracking-tight text-white">
                 <input
                     className="bg-transparent outline-none w-full"
@@ -47,10 +54,11 @@ export default function ConverterPanel({
                     min="0"
                     value={amount}
                     onChange={(e) => onAmountChange(e.target.value)}
-                    placeholder="0"
+                    placeholder="Enter amount"
                 />
             </div>
-
+            
+            {/* Swap button */}
             <div className="relative my-6">
                 <div className="h-px bg-white/15" />
                 <button
@@ -64,17 +72,21 @@ export default function ConverterPanel({
                     ↕
                 </button>
             </div>
-
+            
+            {/* To Currency */}
             <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-300">To Currency</span>
+                <span className="text-sm text-gray-300">To</span>
+                <div className="w-1/2 min-w-0 md:w-auto md:min-w-[260px]">
                 <CurrencyDropdown
                     value={to}
                     options={currencyOptions}
                     onChange={onToChange}
                 />
+                </div>
             </div>
-
-            <div className="mt-2 text-6xl md:text-7xl font-semibold tracking-tight text-white">
+            
+            {/* Result */}
+            <div className="mt-2 text-4xl sm:text-6xl md:text-7xl font-semibold tracking-tight text-white">
                 {loading ? (
                     <div className="animate-pulse h-12 bg-white/10 rounded" />
                 ) : Number.isFinite(result ?? NaN) ? (
